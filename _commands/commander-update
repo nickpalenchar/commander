@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# updates each file based on each file's `update` file
+
+# eg `.bash_profile`'s update file is called `.bash_profile.update`
+
+TIMESTAMP=$(date "+%Y-%m-%d_%H-%M")
+
+for i in {.,?}*.update ; do
+    [ -f "$i" ] || break
+    FILE=$(cat $i | grep targetFile | cut -d= -f2) 
+    echo "file is $FILE\_$TIMESTAMP |"
+    mv $FILE "$FILE--$TIMESTAMP"
+done
