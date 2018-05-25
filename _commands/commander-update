@@ -10,5 +10,5 @@ for i in {.,?}*.update ; do
     [ -f "$i" ] || break
     FILE=$(cat $i | grep targetFile | cut -d= -f2) 
     echo "file is $FILE\_$TIMESTAMP |"
-    mv $FILE "$FILE--$TIMESTAMP"
+    mv $FILE "$FILE--$TIMESTAMP" 2>> /var/log/nickpal-commander
 done

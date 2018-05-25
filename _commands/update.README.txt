@@ -1,0 +1,15 @@
+use cmr-lang (the domain language for this project :)
+
+F `name` - match Filename <name>
+F [`name1`, `name2`, `...nameN'] - match a list of filename `name`s and does following action with each one, in order.
+A(`statement`) `...commands` - Action. Do if statement is true with last matched F.
+E - End. Denotes end of Action block, or clears F if no action block.
+
+> `...commands` - what to do with an old file that was replaced by a `dest` command (replaces last matched F)
+
+dest - set the destination, replacing a file of the same name. file to be replaced can have additional actions with dest.
+ts - add a timestamp to the filename
+rn `name` - rename matched F to name.
+
+archive[`:option`] - archives the file using `tar -z`. file goes to default archive state, in the archive that shares
+                     the same name. :g instead adds to a global archive.
